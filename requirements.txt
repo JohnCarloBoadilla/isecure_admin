@@ -1,0 +1,6 @@
+fastapi
+pymysql
+PyJWT
+Pillow
+requests
+pytesseract
