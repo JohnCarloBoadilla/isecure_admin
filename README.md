@@ -1,2 +1,2 @@
-# isecure_admin
+# isecure
 
