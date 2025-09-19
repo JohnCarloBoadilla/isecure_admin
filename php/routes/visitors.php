@@ -1,14 +1,15 @@
 <?php
-include_once "../utils/db.php";
-include_once "../utils/fastapi_client.php";
-include_once "../partials/sidebar.php";
+require_once '../models/Database.php';
+include_once "utils/fastapi_client.php";
+include_once "partials/sidebar.php";
 
+$db = Database::getConnection();
 $statusFilter = $_GET['status'] ?? 'all';
 $query = "SELECT * FROM visitors";
 if($statusFilter != 'all'){
     $query .= " WHERE status = :status";
 }
-$stmt = $pdo->prepare($query);
+$stmt = $db->prepare($query);
 if($statusFilter != 'all'){
     $stmt->execute(['status' => $statusFilter]);
 }else{

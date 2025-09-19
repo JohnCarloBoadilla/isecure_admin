@@ -33,12 +33,12 @@ h1 { margin-bottom: 40px; }
 </div>
 
 <script>
-fetch('/static/partials/sidebar.html')
+fetch('partials/sidebar.php')
 .then(res => res.text())
 .then(html => document.getElementById('sidebar-container').innerHTML = html);
 
 function goToFeature(feature) {
-    window.location.href = `/static/camera_livefeed.html?mode=${feature}`;
+    window.location.href = `camera_livefeed.php?mode=${feature}`;
 }
 </script>
 </body>

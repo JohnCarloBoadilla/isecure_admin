@@ -1,13 +1,14 @@
 <?php
-include_once "../utils/db.php";
-include_once "../partials/sidebar.php";
+require_once '../models/Database.php';
+include_once "partials/sidebar.php";
 
+$db = Database::getConnection();
 $statusFilter = $_GET['status'] ?? 'all';
 $query = "SELECT * FROM vehicles";
 $params = [];
 if($statusFilter != 'all'){ $query.=" WHERE status=:status"; $params=['status'=>$statusFilter]; }
 
-$stmt = $pdo->prepare($query);
+$stmt = $db->prepare($query);
 $stmt->execute($params);
 $vehicles = $stmt->fetchAll();
 ?>

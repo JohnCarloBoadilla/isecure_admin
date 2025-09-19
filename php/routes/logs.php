@@ -1,7 +1,8 @@
 <?php
-include_once "../utils/db.php";
-include_once "../partials/sidebar.php";
+require_once '../models/Database.php';
+include_once "partials/sidebar.php";
 
+$db = Database::getConnection();
 $typeFilter = $_GET['type'] ?? 'all';
 $statusFilter = $_GET['status'] ?? 'all';
 
@@ -11,7 +12,7 @@ $params = [];
 if($typeFilter != 'all') { $query .= " AND type = :type"; $params['type'] = $typeFilter; }
 if($statusFilter != 'all') { $query .= " AND status = :status"; $params['status'] = $statusFilter; }
 
-$stmt = $pdo->prepare($query);
+$stmt = $db->prepare($query);
 $stmt->execute($params);
 $logs = $stmt->fetchAll();
 ?>

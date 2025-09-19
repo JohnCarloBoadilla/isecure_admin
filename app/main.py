@@ -1,6 +1,8 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from app.services import face_service, vehicle_service, ocr_service
+from .services.face_service import recognize_face
+from .services.vehicle_services import detect_vehicle_plate, detect_vehicle_color
+from .services.ocr_services import extract_id_info
 
 app = FastAPI(title="iSecure Recognition API")
 
@@ -14,9 +16,9 @@ app.add_middleware(
 )
 
 @app.post("/recognize/face")
-async def recognize_face(file: UploadFile = File(...)):
+async def recognize_face_endpoint(file: UploadFile = File(...)):
     try:
-        result = face_service.recognize_face(file)
+        result = recognize_face(file)
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -24,9 +26,9 @@ async def recognize_face(file: UploadFile = File(...)):
 @app.post("/recognize/vehicle")
 async def recognize_vehicle(file: UploadFile = File(...)):
     try:
-        plate = vehicle_service.detect_vehicle_plate(file)
+        plate = detect_vehicle_plate(file)
         file.file.seek(0)  # Reset file pointer for color detection
-        color = vehicle_service.detect_vehicle_color(file)
+        color = detect_vehicle_color(file)
         return {"plate_number": plate, "color": color}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -34,7 +36,7 @@ async def recognize_vehicle(file: UploadFile = File(...)):
 @app.post("/ocr/id")
 async def ocr_id(file: UploadFile = File(...)):
     try:
-        result = ocr_service.extract_id_info(file)
+        result = extract_id_info(file)
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

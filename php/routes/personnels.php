@@ -1,9 +1,10 @@
 <?php
-include_once "../utils/db.php";
-include_once "../partials/sidebar.php";
+require_once '../models/Database.php';
+include_once "partials/sidebar.php";
 
+$db = Database::getConnection();
 if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['name'])){
-    $stmt = $pdo->prepare("INSERT INTO personnels (name, department, position, contact, email, face_photo_path)
+    $stmt = $db->prepare("INSERT INTO personnels (name, department, position, contact, email, face_photo_path)
     VALUES (:name,:department,:position,:contact,:email,:face_photo)");
     
     $photoPath = 'uploads/' . basename($_FILES['face_photo']['name']);
@@ -20,7 +21,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['name'])){
     echo "<p>Personnel added successfully.</p>";
 }
 
-$stmt = $pdo->query("SELECT * FROM personnels ORDER BY name ASC");
+$stmt = $db->query("SELECT * FROM personnels ORDER BY name ASC");
 $personnels = $stmt->fetchAll();
 ?>
 

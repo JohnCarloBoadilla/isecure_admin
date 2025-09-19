@@ -1,9 +1,18 @@
 <?php
-include_once "../utils/db.php";
-include_once "../partials/sidebar.php";
+require_once '../models/Database.php';
+include_once "partials/sidebar.php";
 
-$stmt = $pdo->query("SELECT * FROM visitors WHERE status='pending' ORDER BY datetime_request DESC");
-$pendingVisitors = $stmt->fetchAll();
+$db = Database::getConnection();
+
+// Check if status column exists, if not, get all visitors
+try {
+    $stmt = $db->query("SELECT * FROM visitors WHERE status='pending' ORDER BY datetime_request DESC");
+    $pendingVisitors = $stmt->fetchAll();
+} catch (PDOException $e) {
+    // If status column doesn't exist, get all visitors
+    $stmt = $db->query("SELECT * FROM visitors ORDER BY id DESC");
+    $pendingVisitors = $stmt->fetchAll();
+}
 ?>
 
 <h2>Pending Visitors</h2>

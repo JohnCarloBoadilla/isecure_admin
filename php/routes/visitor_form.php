@@ -1,9 +1,10 @@
 <?php
-include_once "../utils/db.php";
-include_once "../partials/sidebar.php";
+require_once '../models/Database.php';
+include_once "partials/sidebar.php";
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $stmt = $pdo->prepare("INSERT INTO visitors (visitor_name,address,contact_number,email,id_photo_path,selfie_path,
+    $db = Database::getConnection();
+    $stmt = $db->prepare("INSERT INTO visitors (visitor_name,address,contact_number,email,id_photo_path,selfie_path,
     vehicle_owner,brand,plate_number,color,model,vehicle_photo_path,reason,personnel_related,datetime_request,status)
     VALUES (:visitor_name,:address,:contact,:email,:id_photo,:selfie,:vehicle_owner,:brand,:plate,:color,:model,:vehicle_photo,:reason,:personnel_related,:datetime_request,'pending')");
 

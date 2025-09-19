@@ -1,9 +1,22 @@
 <?php
-include_once "../utils/db.php";
-include_once "../partials/sidebar.php";
+require_once '../models/Database.php';
+include_once "partials/sidebar.php";
 
-$visitorCounts = $pdo->query("SELECT status, COUNT(*) as total FROM visitors GROUP BY status")->fetchAll();
-$vehicleCounts = $pdo->query("SELECT status, COUNT(*) as total FROM vehicles GROUP BY status")->fetchAll();
+$db = Database::getConnection();
+
+// Check if status column exists in visitors table
+try {
+    $visitorCounts = $db->query("SELECT status, COUNT(*) as total FROM visitors GROUP BY status")->fetchAll();
+} catch (PDOException $e) {
+    $visitorCounts = [];
+}
+
+// Check if status column exists in vehicles table
+try {
+    $vehicleCounts = $db->query("SELECT status, COUNT(*) as total FROM vehicles GROUP BY status")->fetchAll();
+} catch (PDOException $e) {
+    $vehicleCounts = [];
+}
 
 function getStatusCount($data, $status) {
     foreach($data as $d){ if($d['status']==$status) return $d['total']; }
