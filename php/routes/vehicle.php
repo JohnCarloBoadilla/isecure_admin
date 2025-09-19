@@ -2,11 +2,23 @@
 require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
+
 $db = Database::getConnection();
 $statusFilter = $_GET['status'] ?? 'all';
-$query = "SELECT * FROM vehicles";
+$searchTerm = $_GET['search'] ?? '';
+
+$query = "SELECT * FROM vehicles WHERE 1=1";
 $params = [];
-if($statusFilter != 'all'){ $query.=" WHERE status=:status"; $params=['status'=>$statusFilter]; }
+
+if($statusFilter != 'all'){
+    $query .= " AND status = :status";
+    $params['status'] = $statusFilter;
+}
+
+if(!empty($searchTerm)){
+    $query .= " AND (owner LIKE :search OR brand LIKE :search OR plate_number LIKE :search OR color LIKE :search OR model LIKE :search)";
+    $params['search'] = '%' . $searchTerm . '%';
+}
 
 $stmt = $db->prepare($query);
 $stmt->execute($params);
@@ -22,6 +34,10 @@ $vehicles = $stmt->fetchAll();
     <option value="approved" <?= $statusFilter=='approved'?'selected':'' ?>>Approved</option>
     <option value="denied" <?= $statusFilter=='denied'?'selected':'' ?>>Denied</option>
 </select>
+&nbsp;&nbsp;
+<label>Search:</label>
+<input type="text" name="search" value="<?= htmlspecialchars($searchTerm) ?>" placeholder="Search vehicles...">
+<button type="submit">Search</button>
 </form>
 
 <table border="1">

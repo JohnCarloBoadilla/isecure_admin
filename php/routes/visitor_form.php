@@ -34,13 +34,27 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         'personnel_related' => $_POST['personnel_related'],
         'datetime_request' => $_POST['datetime_request']
     ]);
-
-    echo "<p>Visitor request submitted successfully!</p>";
+    // Set a success message in session and redirect back to the referring page or default to visitors.php
+    session_start();
+    $_SESSION['message'] = "Visitor request submitted successfully!";
+    $redirectUrl = $_POST['redirect'] ?? 'visitors.php';
+    header("Location: $redirectUrl");
+    exit;
 }
 ?>
 
 <h2>Visitor Form</h2>
+
+<?php
+session_start();
+if(isset($_SESSION['message'])){
+    echo "<script>alert('" . addslashes($_SESSION['message']) . "');</script>";
+    unset($_SESSION['message']);
+}
+?>
+
 <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="redirect" value="<?= htmlspecialchars($_GET['redirect'] ?? 'visitors.php') ?>">
 <h3>Visitor Information</h3>
 <label>Name:</label><input type="text" name="visitor_name" required><br>
 <label>Address:</label><input type="text" name="address" required><br>

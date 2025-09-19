@@ -6,11 +6,22 @@ $db = Database::getConnection();
 $typeFilter = $_GET['type'] ?? 'all';
 $statusFilter = $_GET['status'] ?? 'all';
 
-$query = "SELECT * FROM logs WHERE 1=1";
+$query = "SELECT logs.*, visitors.visitor_name, visitors.time_in, visitors.time_out 
+          FROM logs 
+          LEFT JOIN visitors ON logs.visitor_id = visitors.id
+          WHERE 1=1";
 $params = [];
 
-if($typeFilter != 'all') { $query .= " AND type = :type"; $params['type'] = $typeFilter; }
-if($statusFilter != 'all') { $query .= " AND status = :status"; $params['status'] = $statusFilter; }
+if($typeFilter != 'all') { 
+    $query .= " AND logs.type = :type"; 
+    $params['type'] = $typeFilter; 
+}
+if($statusFilter != 'all') { 
+    $query .= " AND logs.status = :status"; 
+    $params['status'] = $statusFilter; 
+}
+
+$query .= " ORDER BY logs.logged_at DESC";
 
 $stmt = $db->prepare($query);
 $stmt->execute($params);
@@ -37,7 +48,7 @@ $logs = $stmt->fetchAll();
 <table border="1">
     <thead>
         <tr>
-            <th>Type</th><th>Name</th><th>Owner</th><th>Plate Number</th>
+            <th>Type</th><th>Name</th><th>Owner</th><th>Plate Number</th><th>Time In</th><th>Time Out</th>
             <th>Reason</th><th>Description</th><th>Status</th><th>Date/Time</th>
         </tr>
     </thead>
@@ -45,9 +56,11 @@ $logs = $stmt->fetchAll();
         <?php foreach($logs as $log): ?>
         <tr>
             <td><?= htmlspecialchars($log['type']) ?></td>
-            <td><?= htmlspecialchars($log['name'] ?? '-') ?></td>
+            <td><?= htmlspecialchars($log['visitor_name'] ?? $log['name'] ?? '-') ?></td>
             <td><?= htmlspecialchars($log['owner'] ?? '-') ?></td>
             <td><?= htmlspecialchars($log['plate_number'] ?? '-') ?></td>
+            <td><?= htmlspecialchars($log['time_in'] ?? '-') ?></td>
+            <td><?= htmlspecialchars($log['time_out'] ?? '-') ?></td>
             <td><?= htmlspecialchars($log['reason'] ?? '-') ?></td>
             <td><?= htmlspecialchars($log['description'] ?? '-') ?></td>
             <td><?= htmlspecialchars($log['status'] ?? '-') ?></td>

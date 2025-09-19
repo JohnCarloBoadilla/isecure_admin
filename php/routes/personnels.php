@@ -3,38 +3,33 @@ require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
 $db = Database::getConnection();
-if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['name'])){
-    $stmt = $db->prepare("INSERT INTO personnels (name, department, position, contact, email, face_photo_path)
-    VALUES (:name,:department,:position,:contact,:email,:face_photo)");
-    
-    $photoPath = 'uploads/' . basename($_FILES['face_photo']['name']);
-    move_uploaded_file($_FILES['face_photo']['tmp_name'], $photoPath);
 
-    $stmt->execute([
-        'name'=>$_POST['name'],
-        'department'=>$_POST['department'],
-        'position'=>$_POST['position'],
-        'contact'=>$_POST['contact'],
-        'email'=>$_POST['email'],
-        'face_photo'=>$photoPath
-    ]);
-    echo "<p>Personnel added successfully.</p>";
+$searchTerm = $_GET['search'] ?? '';
+
+$query = "SELECT * FROM personnels WHERE 1=1";
+$params = [];
+
+if(!empty($searchTerm)){
+    $query .= " AND (name LIKE :search OR department LIKE :search OR position LIKE :search OR contact LIKE :search OR email LIKE :search)";
+    $params['search'] = '%' . $searchTerm . '%';
 }
 
-$stmt = $db->query("SELECT * FROM personnels ORDER BY name ASC");
+$query .= " ORDER BY name ASC";
+
+$stmt = $db->prepare($query);
+$stmt->execute($params);
 $personnels = $stmt->fetchAll();
 ?>
 
 <h2>Personnel Management</h2>
-<form method="post" enctype="multipart/form-data">
-    <label>Name:</label><input type="text" name="name" required><br>
-    <label>Department:</label><input type="text" name="department" required><br>
-    <label>Position:</label><input type="text" name="position" required><br>
-    <label>Contact:</label><input type="text" name="contact" required><br>
-    <label>Email:</label><input type="email" name="email" required><br>
-    <label>Face Photo:</label><input type="file" name="face_photo" required><br>
-    <button type="submit">Register</button>
+
+<form method="get">
+    <label>Search:</label>
+    <input type="text" name="search" value="<?= htmlspecialchars($searchTerm) ?>" placeholder="Search personnels...">
+    <button type="submit">Search</button>
 </form>
+
+<a href="personnel_form.php"><button type="button">Add Personnel</button></a>
 
 <h3>All Personnel</h3>
 <table border="1">

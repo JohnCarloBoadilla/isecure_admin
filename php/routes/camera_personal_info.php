@@ -47,7 +47,7 @@ th, td { border: 1px solid #333; padding: 5px; text-align: left; }
 </div>
 
 <script>
-fetch('/static/partials/sidebar.html').then(r => r.text()).then(html => document.getElementById('sidebar-container').innerHTML = html);
+fetch('partials/sidebar.php').then(r => r.text()).then(html => document.getElementById('sidebar-container').innerHTML = html);
 
 async function loadVisitorInfo() {
     const visitorName = localStorage.getItem('recognizedVisitorName');
@@ -58,7 +58,7 @@ async function loadVisitorInfo() {
         const data = await res.json();
 
         // Visitor Info
-        document.getElementById('visitor-selfie').src = data.selfie || '/public/default_face.jpg';
+        document.getElementById('visitor-selfie').src = data.selfie || '/public/icons/default_face.jpg';
         document.getElementById('visitor-name').textContent = data.name || "-";
         document.getElementById('visitor-age').textContent = data.age || "-";
         document.getElementById('visitor-gender').textContent = data.gender || "-";

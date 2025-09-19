@@ -14,9 +14,10 @@ video { border: 2px solid #333; border-radius: 10px; }
 <h2>Camera Live Feed</h2>
 <video id="camera" width="640" height="480" autoplay></video>
 <div id="result">Waiting for detection...</div>
+<div id="actions"></div>
 
 <script>
-fetch('/static/partials/sidebar.html').then(r => r.text()).then(html => document.getElementById('sidebar-container').innerHTML = html);
+fetch('partials/sidebar.php').then(r => r.text()).then(html => document.getElementById('sidebar-container').innerHTML = html);
 
 const params = new URLSearchParams(window.location.search);
 const mode = params.get('mode'); // face, vehicle, ocr
@@ -47,7 +48,20 @@ async function captureAndSend() {
             const res = await fetch(url, { method: "POST", body: fd });
             const data = await res.json();
             resultDiv.innerText = JSON.stringify(data, null, 2);
-            if(mode === "face") localStorage.setItem('recognizedVisitorName', data.name);
+            if(mode === "face") {
+                localStorage.setItem('recognizedVisitorName', data.name);
+                // Add button to view personal info
+                const actionsDiv = document.getElementById('actions');
+                actionsDiv.innerHTML = '';
+                if(data.name) {
+                    const btn = document.createElement('button');
+                    btn.textContent = 'View Personal Info';
+                    btn.onclick = () => {
+                        window.location.href = 'camera_personal_info.php';
+                    };
+                    actionsDiv.appendChild(btn);
+                }
+            } 
         } catch(err) {
             resultDiv.innerText = "Recognition failed: " + err.message;
         }

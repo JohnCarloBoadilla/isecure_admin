@@ -4,3 +4,8 @@ PyJWT
 Pillow
 requests
 pytesseract
+face_recognition
+opencv-python
+numpy
+uvicorn
+#pip install git+https://github.com/ageitgey/face_recognition_models
