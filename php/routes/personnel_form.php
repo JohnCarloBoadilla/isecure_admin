@@ -2,7 +2,7 @@
 require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
-$db = Database::getConnection();
+$db = DBModel::getConnection();
 
 if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['name'])){
     $stmt = $db->prepare("INSERT INTO personnels (name, department, position, contact, email, face_photo_path)

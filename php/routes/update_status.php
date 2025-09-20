@@ -21,7 +21,7 @@ if (!in_array($action, ['approve', 'deny'])) {
 }
 
 try {
-    $conn = Database::getConnection();
+    $conn = DBModel::getConnection();
     
     // Update the visitor status
     $stmt = $conn->prepare("UPDATE visitors SET status = :status WHERE id = :id");

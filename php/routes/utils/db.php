@@ -2,8 +2,8 @@
 function get_db_connection() {
     $host = "localhost";
     $db   = "isecuredb";
-    $user = "root";
-    $pass = "";
+    $user = "it11";
+    $pass = "faxjgeninc";
 
     try {
         $conn = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);

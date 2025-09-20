@@ -2,7 +2,7 @@
 require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
-$db = Database::getConnection();
+$db = DBModel::getConnection();
 
 // Fetch daily visit counts grouped by date (day)
 $query = "SELECT DATE(created_at) as visit_date, COUNT(*) as visit_count FROM visitors GROUP BY visit_date ORDER BY visit_date ASC";

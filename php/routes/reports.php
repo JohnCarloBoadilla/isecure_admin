@@ -2,7 +2,7 @@
 require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
-$db = Database::getConnection();
+$db = DBModel::getConnection();
 
 // Check if status column exists in visitors table
 try {

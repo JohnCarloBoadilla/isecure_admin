@@ -2,8 +2,7 @@
 require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
-
-$db = Database::getConnection();
+$db = DBModel::getConnection();
 $statusFilter = $_GET['status'] ?? 'all';
 $searchTerm = $_GET['search'] ?? '';
 

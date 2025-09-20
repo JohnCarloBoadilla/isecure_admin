@@ -2,7 +2,7 @@
 require_once 'php/models/Database.php';
 
 try {
-    $db = Database::getConnection();
+    $db = DBModel::getConnection();
     $stmt = $db->query('DESCRIBE personnels');
     $columns = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -2,7 +2,7 @@
 require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
-$db = Database::getConnection();
+$db = DBModel::getConnection();
 
 // Fetch counts for dashboard cards
 // Current Visitors count (status = 'approved' and time_out is null)
