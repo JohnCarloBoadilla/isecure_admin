@@ -1,5 +1,7 @@
 <?php
-require 'db_connect.php';
+require_once '../models/Database.php';
+
+$db = DBModel::getConnection();
 
 header('Content-Type: application/json');
 

@@ -8,13 +8,13 @@ $pdo = DBModel::getConnection();
 $fullName = 'Unknown User';
 $role     = 'Unknown Role';
 
-// ✅ 1. Check if session token exists
+// 1. Check if session token exists
 if (empty($_SESSION['token'])) {
     header("Location: loginpage.php?not_logged_in=1");
     exit;
 }
 
-// ✅ 2. Validate token in DB (must exist + not expired)
+// 2. Validate token in DB (must exist + not expired)
 $stmt = $pdo->prepare("
     SELECT ps.user_id, u.full_name, u.role 
     FROM personnel_sessions ps
@@ -33,6 +33,6 @@ if (!$session) {
     exit;
 }
 
-// ✅ 3. Sanitize output for use in UI
+// 3. Sanitize output for use in UI
 $fullName = htmlspecialchars($session['full_name'] ?? 'Unknown User', ENT_QUOTES, 'UTF-8');
 $role     = htmlspecialchars($session['role'] ?? 'Unknown Role', ENT_QUOTES, 'UTF-8');
