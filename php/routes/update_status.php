@@ -2,6 +2,8 @@
 header('Content-Type: application/json');
 require_once '../models/Database.php';
 
+$pdo= DBModel::getConnection();
+
 // Get the POST body
 $data = json_decode(file_get_contents("php://input"), true);
 

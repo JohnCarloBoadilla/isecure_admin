@@ -1,9 +1,7 @@
-<?php     
+<?php
 session_start();
-require_once '../models/Database.php';
-require_once 'audit_log.php';
-
-$pdo = DBModel::getConnection();
+require 'db_connect.php';
+require 'audit_log.php';
 
 // Read POST from form submission
 $email = $_POST['email'] ?? '';
@@ -52,10 +50,8 @@ $_SESSION['role']    = $user['role'];
 
 // Route by role
 if ($user['role'] === 'Admin') {
-    header('Location: maindashboard.php');  // relative to routes/
+    header('Location: maindashboard.php');
 } else {
-    header('Location: maindashboard.php');  // or another dashboard for personnel
+    header('Location: maindashboard.php'); 
 }
 exit;
-
-?>

@@ -1,7 +1,7 @@
 <?php
 require_once '../models/Database.php';
 
-$db = Database::getConnection();
+$db = DBModel::getConnection();
 
 // API endpoint to get all personnels' face encodings for face recognition
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && strpos($_SERVER['REQUEST_URI'], '/api/personnels/all_face_encodings') !== false) {

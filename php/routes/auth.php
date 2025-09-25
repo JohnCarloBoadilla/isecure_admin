@@ -1,6 +1,8 @@
 <?php
 session_start();
-require_once '../models/Database.php';
+require '../models/Database.php';
+
+$pdo = DBModel::getConnection();
 
 if (!isset($_SESSION['token']) || !isset($_SESSION['user_id'])) {
     http_response_code(401);

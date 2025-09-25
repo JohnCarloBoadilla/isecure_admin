@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Database.php';
+require 'db_connect.php';
 
 header('Content-Type: application/json');
 

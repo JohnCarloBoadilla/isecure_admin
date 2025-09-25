@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Database.php';
+require 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $caption_title = $_POST['caption_title'] ?? null;

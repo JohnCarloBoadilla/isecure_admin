@@ -1,5 +1,7 @@
 <?php
-require '../models/Database.php';
+require_once '../models/Database.php';
+
+$pdo = DBModel::getConnection();
 
 define('ENC_KEY', 'your-32-character-secret-key');
 
@@ -9,7 +11,7 @@ function encryptData($data) {
     return base64_encode($iv . $cipher);
 }
 
-$data = $_POST; // because you're sending via FormData in JS
+$data = $_POST; 
 
 if (!$data || empty($data['full_name']) || empty($data['email']) || empty($data['password'])) {
     echo json_encode(["success" => false, "message" => "Missing required fields"]);

@@ -1,5 +1,6 @@
 <?php
-require_once '../models/Database.php';
+require 'db_connect.php'; // this should set up $pdo (PDO connection)
+
 try {
     // Unique ID for the new user
     $id = uniqid();

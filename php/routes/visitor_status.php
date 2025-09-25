@@ -2,7 +2,6 @@
 require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
-
 $db = DBModel::getConnection();
 
 $searchTerm = $_GET['search'] ?? '';

@@ -1,8 +1,7 @@
 <?php
 session_start();
-require_once '../models/Database.php';
+require '../models/Database.php';
 
-// ✅ Get PDO connection
 $pdo = DBModel::getConnection();
 
 // Default fallbacks

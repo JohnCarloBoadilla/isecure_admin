@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../models/Database.php';
+require 'db_connect.php';
 require 'audit_log.php'; // <-- include your logging function
 
 // Capture user before clearing session

@@ -1,5 +1,5 @@
 <?php
-require_once '../models/Database.php';
+require 'db_connect.php';
 
 $token = $_GET['token'] ?? '';
 

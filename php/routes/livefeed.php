@@ -1,8 +1,6 @@
 <?php
-session_start();
-require_once '../models/Database.php';
-
-$pdo = DBModel::getConnection();
+require 'auth_check.php';
+require 'audit_log.php';
 
 // Default fallbacks so template never sees an undefined variable
 $fullName = 'Unknown User';
@@ -62,7 +60,7 @@ if (!empty($session['user_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" type="image/png" href=".\images\logo\5thFighterWing-logo.png">
-    <link rel="stylesheet" href="..\..\stylesheet\livefeed.css">
+    <link rel="stylesheet" href=".\stylesheet\livefeed.css">
     <title>Main Dashboard</title>
 </head>
 <body>
@@ -70,7 +68,34 @@ if (!empty($session['user_id'])) {
 <div class="body">
 
 <div class="left-panel">
-    <div id="sidebar-container"></div>
+<div class="sidebar-panel">
+
+    <h1 class="sidebar-header">
+        iSecure
+    </h1>
+
+<div class="nav-links">
+
+    <ul>
+    <h6>MENU</h6>
+        <li><i class="fa-solid fa-gauge-high"></i><a href="..\iSecure - final\maindashboard.php"> Main Dashboard</a></li>
+        <li><i class="fa-solid fa-video"></i><a href="..\iSecure - final\cameraview.php"> Camera View</a></li>
+        <li class="camera-view-drop-down"><i class="fa-solid fa-circle-dot"></i><a href="..\iSecure - final\livefeed.php"> Live Feed</a></li>
+        <li class="camera-view-drop-down"><i class="fa-solid fa-id-card-clip"></i><a href="..\iSecure - final\personinformation.php"> Person Information</a></li>
+        <li><i class="fa-solid fa-user"></i><a href="..\iSecure - final\visitors.php"> Visitors</a></li>
+        <li><i class="fa-solid fa-car-side"></i><a href="..\iSecure - final\vehicles.php"> Vehicles</a></li>
+        <li><i class="fa-solid fa-user-gear"></i><a href="..\iSecure - final\personnels.php"> Personnels</a></li>
+        <li><i class="fa-solid fa-clock-rotate-left"></i><a href="..\iSecure - final\pendings.php"> Pendings</a></li>
+    <h6>DATA MANAGEMENT</h6>
+        <li><i class="fa-solid fa-image-portrait"></i><a href="..\iSecure - final\personnelaccounts.php"> Personnel Accounts</a></li>
+        <li><i class="fa-solid fa-box-archive"></i><a href="..\iSecure - final\inventory.php"> Inventory</a></li>
+    <h6>CUSTOMIZATION</h6>
+        <li><i class="fa-solid fa-newspaper"></i><a href="..\iSecure - final\customizelanding.php"> Landing Page</a></li>
+    </ul>
+
+</div>
+
+</div>
 </div>
 
 <div class="right-panel">
@@ -79,7 +104,7 @@ if (!empty($session['user_id'])) {
        <div class="main-header">
         <div class="header-left">
             <i class="fa-solid fa-home"></i> 
-            <h6 class="path"> / Dashboards /</h6>
+            <h6 class="path"> / Dashboard /</h6>
             <h6 class="current-loc">Live Feed</h6>
         </div>
 
@@ -113,9 +138,8 @@ if (!empty($session['user_id'])) {
 
 </div>
 </div>
-<script src="../../scripts/sidebar.js"></script>
-<script src="../../scripts/livefeed.js"></script>
-<script src="../../scripts/session_check.js"></script>
+<script src="./scripts/livefeed.js"></script>
+<script src="./scripts/session_check.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

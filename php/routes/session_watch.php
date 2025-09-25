@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once '../models/Database.php';
+require 'auth_check.php';
 
 // SSE headers
 header("Content-Type: text/event-stream");

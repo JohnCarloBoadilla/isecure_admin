@@ -2,28 +2,30 @@
     padding: 0;
     margin: 0;
     font-family: 'League Spartan', sans-serif;
-    background-color: #F5F5F5;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .body {
     display: flex;
-    margin-right: 0;
     height: 100vh;
+    overflow: hidden;
+    background-color: #F5F5F5;
 }
 
 .left-panel {
-    flex: 0 0 10%;
+    flex: 0 0 auto;
 }
 
 .right-panel {
-    flex: 0 0 87%;
+    flex: 1;
 }
 
 .sidebar-panel {
     padding: 10px;
     background-color: #006682;
     min-width: 252px;
+    max-width: 252px;
     height: 100%;
 }
 
@@ -40,10 +42,10 @@
 }
 
 .nav-links ul {
-    background-color: transparent;
-    list-style: none;
-    padding: 10px;
-    flex-wrap: wrap;
+   background-color: transparent;
+   list-style: none;
+   padding: 10px;
+   flex-wrap: wrap;
 }
 
 .nav-links h6 {
@@ -74,7 +76,8 @@
 .camera-view-drop-down {
     margin-left: 20px;
 }
-.nav-links a{
+
+.nav-links a {
     text-decoration: none;
     background-color: transparent;
     color: white;
@@ -87,9 +90,10 @@
 }
 
 .main-content {
+    flex: 1;
     padding: 20px;
     background-color: #F5F5F5;
-    height: 100%;
+    overflow-y: auto;
 }
 
 .main-header {
@@ -111,6 +115,36 @@
     align-items: center;
     gap: 15px;
     background-color: transparent;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  gap: 8px;
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  background-color: transparent;
+}
+
+.username {
+  font-weight: 900;
+  background-color: transparent;
+}
+
+.logout-link {
+  font-size: 13px;
+  color: red;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logout-link:hover {
+  text-decoration: underline;
 }
 
 .header-left i {
@@ -151,17 +185,119 @@
     font-size: 30px;
 }
 
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: transparent;
-}
-
-
 .username {
     font-weight: 900;
     text-align: center;
     padding-top: 10px;
     background-color: transparent;
+}
+
+/* =====================
+   Custom Modal Styling
+   ===================== */
+
+/* Override Bootstrap modal header */
+.modal-header {
+  background-color: #006682;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 15px 20px;
+}
+
+.modal-header .modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.modal-header .btn-close {
+  filter: brightness(0) invert(1); /* makes the X white */
+  opacity: 0.8;
+}
+
+.modal-header .btn-close:hover {
+  opacity: 1;
+}
+
+/* Match modal body to theme */
+.modal-body {
+  padding: 20px 25px;
+}
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Modal footer styled like dashboard buttons */
+.modal-footer {
+  border-top: none;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-footer .btn {
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 8px 18px;
+}
+
+.modal-footer .btn-primary {
+  background-color: #006682;
+  border: none;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #2789A4;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* =====================
+   Responsive tweaks
+   ===================== */
+
+/* Tablets or smaller laptops */
+@media (max-width: 1366px) {
+    .sidebar-panel {
+        min-width: 220px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile or very small screens */
+@media (max-width: 768px) {
+    .body {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        width: 100%;
+    }
+
+    .sidebar-panel {
+        width: 100%;
+        min-width: unset;
+        max-width: unset;
+        height: auto;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
 }
