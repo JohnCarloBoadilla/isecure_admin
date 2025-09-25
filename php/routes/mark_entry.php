@@ -1,6 +1,9 @@
 <?php
-require 'db_connect.php';
+require_once '../models/Database.php';
+
 header('Content-Type: application/json');
+
+$pdo = DBModel::getConnection();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $vehicleId = $_POST['id'] ?? null;

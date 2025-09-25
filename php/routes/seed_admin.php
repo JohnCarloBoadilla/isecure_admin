@@ -1,5 +1,7 @@
 <?php
-require 'db_connect.php'; // this should set up $pdo (PDO connection)
+require_once '../models/Database.php';
+
+$pdo = DBModel::getConnection();
 
 try {
     // Unique ID for the new user

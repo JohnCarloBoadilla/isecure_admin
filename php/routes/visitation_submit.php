@@ -1,7 +1,10 @@
 <?php
 session_start();
-require 'db_connect.php';
+require_once '../models/Database.php';
 require 'audit_log.php';
+
+$pdo = DBModel::getConnection();
+
 
 // File upload function
 function uploadFile($fileInput, $uploadDir = "uploads/") {

@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar</title>
-    <style type="stylesheet" href="../../stylesheet/sdiebar.css"></style>
-</head>
-<body>
-    <div class="left-panel">
-    <div class="sidebar-panel">
-        <h1 class="sidebar-header">iSecure</h1>
+<div class="sidebar-panel">
+    <h1 class="sidebar-header">iSecure</h1>
         <div class="nav-links">
         <ul>
             <h6>MENU</h6>
@@ -22,7 +12,7 @@
             <li><i class="fa-solid fa-user-gear"></i><a href="personnels.php"> Personnels</a></li>
             <li><i class="fa-solid fa-clock-rotate-left"></i><a href="pendings.php"> Pendings</a></li>
             <h6>DASHBOARD WIDGETS</h6>
-            <li><i class="fa-solid fa-chart-column"></i><a href="#daily-visits-widget"> Daily Visits Analysis</a></li>
+            <li><i class="fa-solid fa-chart-column"></i><a href="daily_visit_analysis.php"> Daily Visits Analysis</a></li>
             <li><i class="fa-solid fa-list-check"></i><a href="#visitor-status-widget"> Visitor Status</a></li>
             <li><i class="fa-solid fa-car"></i><a href="#latest-vehicle-widget"> Latest Vehicle Entry</a></li>
             <li><i class="fa-solid fa-user-clock"></i><a href="#user-activity-widget"> User Activity</a></li>
@@ -33,7 +23,4 @@
             <li><i class="fa-solid fa-newspaper"></i><a href="customizelanding.php"> Landing Page</a></li>
         </ul>
         </div>
-    </div>
-    </div>
-</body>
-</html>
+</div>

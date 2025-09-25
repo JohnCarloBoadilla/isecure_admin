@@ -1,5 +1,7 @@
 <?php
-require 'db_connect.php';
+require_once '../models/Database.php';
+
+$pdo = DBModel::getConnection();
 
 define('ENC_KEY', 'your-32-character-secret-key');
 

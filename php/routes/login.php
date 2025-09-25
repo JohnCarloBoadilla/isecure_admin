@@ -1,8 +1,9 @@
 <?php
 session_start();
-require 'db_connect.php';
+require_once '../models/Database.php';
 require 'audit_log.php';
 
+$pdo = DBModel::getConnection();
 // Read POST from form submission
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';

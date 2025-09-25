@@ -1,5 +1,7 @@
 <?php
-require 'db_connect.php';
+require_once '../models/Database.php';
+
+$pdo = DBModel::getConnection();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imagePath = null;

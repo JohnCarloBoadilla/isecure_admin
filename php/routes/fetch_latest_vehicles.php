@@ -1,6 +1,8 @@
 <?php
 require 'auth_check.php';
-require 'db_connect.php';
+require_once '../models/Database.php';
+
+$pdo = DBModel::getConnection();
 
 header('Content-Type: application/json');
 

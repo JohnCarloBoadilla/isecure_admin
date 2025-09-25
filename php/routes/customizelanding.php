@@ -59,7 +59,7 @@ if (!empty($session['user_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" type="image/png" href=".\images\logo\5thFighterWing-logo.png">
-    <link rel="stylesheet" href=".\stylesheet\customizelanding.css">
+    <link rel="stylesheet" href="../../stylesheet/customizelanding.css">
     <title>Main Dashboard</title>
 </head>
 <body>
@@ -239,7 +239,7 @@ if (!empty($session['user_id'])) {
 </div>
 </div>
 <script src=""></script>
-<script src="./scripts/session_check.js"></script>
+<script src="../../scripts/session_check.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

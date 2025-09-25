@@ -1,7 +1,10 @@
 <?php
 session_start();
-require 'db_connect.php';
-require 'audit_log.php'; // <-- include your logging function
+require_once '../models/Database.php';
+require 'audit_log.php';
+
+$pdo = DBModel::getConnection();
+ // <-- include your logging function
 
 // Capture user before clearing session
 $userId = $_SESSION['user_id'] ?? 'guest';
