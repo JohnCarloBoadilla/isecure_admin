@@ -112,12 +112,12 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <thead class="table-light"><tr><th>Visitor</th><th>Date</th><th>Time</th><th>Status</th><th>Actions</th></tr></thead>
         <tbody id="pendingTable">
         <?php foreach ($requests as $req): ?>
-          <?php if ($req['status'] === 'Pending'): ?>
+          <?php if (isset($req['status']) && $req['status'] === 'Pending'): ?>
             <tr data-id="<?= $req['id'] ?>">
               <td><?= htmlspecialchars($req['visitor_name']) ?></td>
               <td><?= htmlspecialchars($req['visit_date']) ?></td>
               <td><?= htmlspecialchars($req['visit_time']) ?></td>
-              <td><span class="badge bg-warning text-dark"><?= $req['status'] ?></span></td>
+              <td><span class="badge bg-warning text-dark"><?= htmlspecialchars($req['status'] ?? 'Unknown') ?></span></td>
               <td>
                 <button class="btn btn-primary btn-sm view-btn"
                   data-id="<?= $req['id'] ?>"
@@ -148,12 +148,12 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <thead class="table-success"><tr><th>Visitor</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
         <tbody id="approvedTable">
         <?php foreach ($requests as $req): ?>
-          <?php if ($req['status'] === 'Approved'): ?>
+          <?php if (isset($req['status']) && $req['status'] === 'Approved'): ?>
             <tr data-id="<?= $req['id'] ?>">
               <td><?= htmlspecialchars($req['visitor_name']) ?></td>
               <td><?= htmlspecialchars($req['visit_date']) ?></td>
               <td><?= htmlspecialchars($req['visit_time']) ?></td>
-              <td><span class="badge bg-success"><?= $req['status'] ?></span></td>
+              <td><span class="badge bg-success"><?= htmlspecialchars($req['status'] ?? 'Unknown') ?></span></td>
             </tr>
           <?php endif; ?>
         <?php endforeach; ?>
@@ -167,12 +167,12 @@ $requests = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <thead class="table-danger"><tr><th>Visitor</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
         <tbody id="rejectedTable">
         <?php foreach ($requests as $req): ?>
-          <?php if ($req['status'] === 'Rejected'): ?>
+          <?php if (isset($req['status']) && $req['status'] === 'Rejected'): ?>
             <tr data-id="<?= $req['id'] ?>">
               <td><?= htmlspecialchars($req['visitor_name']) ?></td>
               <td><?= htmlspecialchars($req['visit_date']) ?></td>
               <td><?= htmlspecialchars($req['visit_time']) ?></td>
-              <td><span class="badge bg-danger"><?= $req['status'] ?></span></td>
+              <td><span class="badge bg-danger"><?= htmlspecialchars($req['status'] ?? 'Unknown') ?></span></td>
             </tr>
           <?php endif; ?>
         <?php endforeach; ?>
@@ -302,7 +302,7 @@ function handleDecision(action) {
     }
     requestModal.hide();
 
-    // 🔹 NEW: refresh vehicles tables if available
+    // NEW: refresh vehicles tables if available
     if (typeof window.loadExpectedVehicles === "function") {
       window.loadExpectedVehicles();
     }

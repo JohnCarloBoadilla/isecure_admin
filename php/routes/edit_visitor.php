@@ -2,7 +2,7 @@
 require 'auth_check.php';
 require_once '../models/Database.php';
 
-$db = DBModel::getConnection();
+$pdo = DBModel::getConnection();
 
 $id = $_GET['id'] ?? null;
 

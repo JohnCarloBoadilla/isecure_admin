@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href=".\images\logo\5thFighterWing-logo.png">
     <link rel="stylesheet" href="../../stylesheet/cameraview.css">
     <link rel="stylesheet" href="../../stylesheet/sidebar.css">
-    <title>Main Dashboard</title>
+    <title>Camera View</title>
 </head>
 <body>
 
@@ -59,10 +59,17 @@
         </div>
     </div>
 
+    <!-- 🚀 Camera Feeds with Features merged -->
     <div class="camera-feed">
-        <div class="camera-view"><i class="fa-solid fa-video"></i></div>
-        <div class="camera-view"><i class="fa-solid fa-video"></i></div>
-        <div class="camera-view"><i class="fa-solid fa-video"></i></div>
+        <div class="camera-view" onclick="goToFeature('face')">
+            <img src="/public/icons/face.png" alt="Facial Recognition" style="cursor:pointer";> Facial Recognition
+        </div>
+        <div class="camera-view" onclick="goToFeature('vehicle')">
+            <img src="/public/icons/vehicle.png" alt="Vehicle Recognition" style="cursor:pointer;"> Vehicle Recognition
+        </div>
+        <div class="camera-view" onclick="goToFeature('ocr')" style="cursor:pointer;">
+            <img src="/public/icons/id.png" alt="OCR ID"> OCR ID
+        </div>
     </div>
 
     <div class="camera-feed-status">
@@ -84,6 +91,7 @@
 
     </div>
     </div>
+
     <script src="../../scripts/sidebar.js"></script>
     <script src="../../scripts/cameraview.js"></script>
     <script src="../../scripts/session_check.js"></script>

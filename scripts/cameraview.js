@@ -17,3 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+/* ---- Feature navigation ---- */
+function goToFeature(feature) {
+  window.location.href = `livefeed.php?mode=${feature}`;
+}
