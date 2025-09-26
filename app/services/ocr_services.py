@@ -1,13 +1,15 @@
-import pytesseract
 from fastapi import UploadFile
+from PIL import Image
+import pytesseract
+import io
+import re
 
 def extract_id_info(file: UploadFile):
-    """Extract text from uploaded ID using OCR."""
     img_bytes = file.file.read()
-    text = pytesseract.image_to_string(img_bytes)
+    file.file.seek(0)
+    image = Image.open(io.BytesIO(img_bytes))
+    text = pytesseract.image_to_string(image)
     
-    # Example parsing (adjust regex as needed)
-    import re
     id_number = re.search(r"ID[:\s]*([A-Z0-9]+)", text)
     dob = re.search(r"DOB[:\s]*([0-9/]+)", text)
     

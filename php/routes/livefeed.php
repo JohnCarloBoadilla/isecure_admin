@@ -2,11 +2,12 @@
 require_once 'auth_check.php';
 require_once 'audit_log.php';
 
-// Session check (basic guard)
 if (!isset($_SESSION['token'])) {
     header("Location: loginpage.php");
     exit;
 }
+
+$mode = $_GET['mode'] ?? 'face';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,16 +67,20 @@ if (!isset($_SESSION['token'])) {
             </div>
 
             <!-- Camera section -->
-            <h2>Camera Live Feed</h2>
-            <video id="camera" width="640" height="480" autoplay></video>
-            <div id="result">Waiting for detection...</div>
-            <div id="actions"></div>
+            <div class="main-content">
+                <h2>Camera Live Feed</h2>
+                <video id="camera" width="640" height="480" autoplay></video>
+                <div id="result">Waiting for detection...</div>
+                <div id="actions"></div>
+            </div>
 
         </div>
     </div>
 
 </div>
-
+<script>
+    const mode = '<?php echo $mode; ?>';
+</script>
 <script src="../../scripts/sidebar.js"></script>
 <script src="../../scripts/livefeed.js"></script>
 <script src="../../scripts/session_check.js"></script>

@@ -1,10 +1,10 @@
+from app.config import get_db_connection
+from datetime import datetime, timedelta
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from datetime import datetime, timedelta
-import sqlite3  # or your DB connector
 
-# Configuration for email sending
+# SMTP configuration
 SMTP_SERVER = 'smtp.example.com'
 SMTP_PORT = 587
 SMTP_USERNAME = 'your_email@example.com'
@@ -32,29 +32,21 @@ def send_email(to_email, visitor_name):
         print(f"Failed to send email to {to_email}: {e}")
 
 def check_visitors_time_limit():
-    # Connect to DB
-    conn = sqlite3.connect('path_to_your_db.sqlite')  # Adjust for your DB
+    conn = get_db_connection()
     cursor = conn.cursor()
-
-    # Get visitors with time_in older than 2 hours and no time_out
     two_hours_ago = datetime.now() - timedelta(hours=2)
+
     cursor.execute("""
         SELECT id, visitor_name, email, time_in FROM visitors
-        WHERE time_in IS NOT NULL AND time_out IS NULL AND time_in <= ?
+        WHERE time_in IS NOT NULL AND time_out IS NULL AND time_in <= %s
     """, (two_hours_ago.strftime('%Y-%m-%d %H:%M:%S'),))
 
     visitors_to_notify = cursor.fetchall()
 
     for visitor in visitors_to_notify:
-        visitor_id, visitor_name, email, time_in = visitor
-        # Use visitor's input email for notification
+        visitor_id, visitor_name, email, time_in = visitor.values()
         if email and email.strip():
             send_email(email.strip(), visitor_name)
-        else:
-            print(f"No valid email for visitor {visitor_name} (ID: {visitor_id}), skipping notification.")
-        # Optionally, update DB to mark notification sent to avoid repeated emails
+        # Optionally mark notification_sent in DB
 
     conn.close()
-
-if __name__ == "__main__":
-    check_visitors_time_limit()

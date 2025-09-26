@@ -23,9 +23,7 @@ if (!$user || !password_verify($password, $user['password_hash'])) {
     log_admin_action($pdo, $user['id'], "User logged in");
 }
 
-
-
-// 🔑 Remove any old sessions for this user
+// Remove any old sessions for this user
 $stmt = $pdo->prepare("DELETE FROM personnel_sessions WHERE user_id = :user_id");
 $stmt->execute([':user_id' => $user['id']]);
 
@@ -39,9 +37,9 @@ $stmt = $pdo->prepare("
     VALUES (:id, :user_id, :token, DATE_ADD(NOW(), INTERVAL 1 HOUR))
 ");
 $stmt->execute([
-  ':id'      => $sessionId,
-  ':user_id' => $user['id'],
-  ':token'   => $token
+    ':id'      => $sessionId,
+    ':user_id' => $user['id'],
+    ':token'   => $token
 ]);
 
 // Secure PHP session

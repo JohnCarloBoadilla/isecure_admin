@@ -1,6 +1,9 @@
 <?php
 require 'auth_check.php';
 require 'audit_log.php';
+require_once '../models/Database.php';
+
+$pdo = DBModel::getConnection();
 
 // Default fallbacks so template never sees an undefined variable
 $fullName = 'Unknown User';
@@ -72,27 +75,7 @@ if (!empty($session['user_id'])) {
 
   <div class="left-panel">
     <div id="sidebar-container"></div>
-
-      <ul>
-          <h6>MENU</h6>
-          <li><i class="fa-solid fa-gauge-high"></i><a href="..\iSecure - final\maindashboard.php"> Main Dashboard</a></li>
-          <li><i class="fa-solid fa-video"></i><a href="..\iSecure - final\cameraview.php"> Camera View</a></li>
-          <li class="camera-view-drop-down"><i class="fa-solid fa-circle-dot"></i><a href="..\iSecure - final\livefeed.php"> Live Feed</a></li>
-          <li class="camera-view-drop-down"><i class="fa-solid fa-id-card-clip"></i><a href="..\iSecure - final\personinformation.php"> Person Information</a></li>
-          <li><i class="fa-solid fa-user"></i><a href="..\iSecure - final\visitors.php"> Visitors</a></li>
-          <li><i class="fa-solid fa-car-side"></i><a href="..\iSecure - final\vehicles.php"> Vehicles</a></li>
-          <li><i class="fa-solid fa-user-gear"></i><a href="..\iSecure - final\personnels.php"> Personnels</a></li>
-          <li><i class="fa-solid fa-clock-rotate-left"></i><a href="..\iSecure - final\pendings.php"> Pendings</a></li>
-          <h6>DATA MANAGEMENT</h6>
-          <li><i class="fa-solid fa-image-portrait"></i><a href="..\iSecure - final\personnelaccounts.php"> Personnel Accounts</a></li>
-          <li><i class="fa-solid fa-box-archive"></i><a href="..\iSecure - final\inventory.php"> Inventory</a></li>
-          <h6>CUSTOMIZATION</h6>
-          <li><i class="fa-solid fa-newspaper"></i><a href="..\iSecure - final\customizelanding.php"> Landing Page</a></li>
-      </ul>
-
   </div>
-
-</div>
 
 <div class="right-panel">
 <div class="main-content">
@@ -258,8 +241,8 @@ if (!empty($session['user_id'])) {
       </select>
 
       <div class="modal-actions">
-        <button class="confirm" type="submit" id="updateUserBtn">✅ Update Account</button>
-        <button class="cancel" type="button" id="cancelEditBtn">❌ Cancel</button>
+        <button class="confirm" type="submit" id="updateUserBtn">Update Account</button>
+        <button class="cancel" type="button" id="cancelEditBtn">Cancel</button>
       </div>
     </form>
   </div>
@@ -288,7 +271,7 @@ if (!empty($session['user_id'])) {
 
 </div>
 </div>
-
+</div>
 <!-- Scripts -->
   <script src="../../scripts/sidebar.js"></script>
   <script src="../../scripts/personnelaccount.js"></script>

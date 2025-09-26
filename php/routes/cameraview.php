@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="icon" type="image/png" href=".\images\logo\5thFighterWing-logo.png">
+    <link rel="icon" type="image/png" href="../../images/logo/5thFighterWing-logo.png">
     <link rel="stylesheet" href="../../stylesheet/cameraview.css">
     <link rel="stylesheet" href="../../stylesheet/sidebar.css">
     <title>Camera View</title>
@@ -26,7 +26,7 @@
     <div class="right-panel">
     <div class="main-content">
     
-       <div class="main-header">
+        <div class="main-header">
         <div class="header-left">
             <i class="fa-solid fa-home"></i> 
             <h6 class="path"> / Dashboard /</h6>
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <!-- 🚀 Camera Feeds with Features merged -->
+    <!-- Camera Feeds with Features merged -->
     <div class="camera-feed">
         <div class="camera-view" onclick="goToFeature('face')">
             <img src="/public/icons/face.png" alt="Facial Recognition" style="cursor:pointer";> Facial Recognition

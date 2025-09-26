@@ -1,6 +1,9 @@
 <?php
 require 'auth_check.php';
 require 'audit_log.php';
+require_once '../models/Database.php';
+
+$pdo = DBModel::getConnection();
 
 // Default fallbacks so template never sees an undefined variable
 $fullName = 'Unknown User';
@@ -47,6 +50,7 @@ if (!empty($session['user_id'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="../../stylesheet/personnelaccounts.css">
   <link rel="stylesheet" href="../../stylesheet/sidebar.css">
+  <link rel="icon" type="image/png" href="../../images/logo/5thFighterWing-logo.png">
 </head>
 <body>
 

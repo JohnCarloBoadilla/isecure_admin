@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2025 at 12:45 PM
+-- Generation Time: Sep 26, 2025 at 05:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -118,7 +118,18 @@ INSERT INTO `admin_audit_logs` (`id`, `user_id`, `action`, `ip_address`, `user_a
 (89, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-25 09:24:51'),
 (90, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-25 10:27:05'),
 (91, '', 'Failed login attempt', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-25 10:43:41'),
-(92, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-25 10:43:54');
+(92, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-25 10:43:54'),
+(93, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 01:42:30'),
+(94, '', 'Failed login attempt', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 02:07:34'),
+(95, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 02:07:52'),
+(96, 'admin@gmail.com', 'Failed login attempt', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 03:10:08'),
+(97, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 03:10:24'),
+(98, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 12:15:43'),
+(99, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 13:30:00'),
+(100, '', 'Failed login attempt', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 14:25:25'),
+(101, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 14:25:55'),
+(102, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 14:34:43'),
+(103, '68bd277dc08a7', 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', '2025-09-26 15:35:01');
 
 -- --------------------------------------------------------
 
@@ -395,7 +406,7 @@ CREATE TABLE `personnel_sessions` (
 --
 
 INSERT INTO `personnel_sessions` (`id`, `user_id`, `token`, `created_at`, `expires_at`) VALUES
-('68d51cea4daa8', '68bd277dc08a7', 'bdbf69da8c60328f48738e8a4b79c141d8e7f8526076de3deff1986e6e0976fc', '2025-09-25 18:43:54', '2025-09-25 19:43:54');
+('68d6b2a5817a5', '68bd277dc08a7', '450ea6cc94115c9b993be5c5d8d864c2c52edf63358914f5d3e0831d9c3ba646', '2025-09-26 23:35:01', '2025-09-27 00:35:01');
 
 -- --------------------------------------------------------
 
@@ -436,7 +447,9 @@ CREATE TABLE `vehicles` (
   `color` varchar(50) DEFAULT NULL,
   `owner_name` varchar(150) DEFAULT NULL,
   `vehicle_type` varchar(50) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `vehicle_brand` varchar(100) DEFAULT NULL,
+  `vehicle_model` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -463,15 +476,16 @@ CREATE TABLE `visitation_requests` (
   `personnel_related` varchar(100) DEFAULT NULL,
   `visit_date` date NOT NULL,
   `visit_time` time NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` enum('Pending','Approved','Rejected') DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `visitation_requests`
 --
 
-INSERT INTO `visitation_requests` (`id`, `visitor_name`, `home_address`, `contact_number`, `email`, `valid_id_path`, `selfie_photo_path`, `vehicle_owner`, `vehicle_brand`, `plate_number`, `vehicle_color`, `vehicle_model`, `vehicle_photo_path`, `reason`, `personnel_related`, `visit_date`, `visit_time`, `created_at`) VALUES
-(3, 'Gabriel Pecson', 'Guagua Pampanga', '09291712820', 'gabriel@example.com', 'uploads/1757919407_personalid.jpg', 'uploads/1757919407_selfie.jpg', '', 'Toyota', 'ABC-1234', '', 'Vios', 'uploads/1757919407_viosred.jpg', 'visitation', 'Major Ponciano', '2025-09-21', '11:00:00', '2025-09-15 06:56:47');
+INSERT INTO `visitation_requests` (`id`, `visitor_name`, `home_address`, `contact_number`, `email`, `valid_id_path`, `selfie_photo_path`, `vehicle_owner`, `vehicle_brand`, `plate_number`, `vehicle_color`, `vehicle_model`, `vehicle_photo_path`, `reason`, `personnel_related`, `visit_date`, `visit_time`, `created_at`, `status`) VALUES
+(3, 'Gabriel Pecson', 'Guagua Pampanga', '09291712820', 'gabriel@example.com', 'uploads/1757919407_personalid.jpg', 'uploads/1757919407_selfie.jpg', '', 'Toyota', 'ABC-1234', '', 'Vios', 'uploads/1757919407_viosred.jpg', 'visitation', 'Major Ponciano', '2025-09-21', '11:00:00', '2025-09-15 06:56:47', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -633,7 +647,7 @@ ALTER TABLE `visitor_sessions`
 -- AUTO_INCREMENT for table `admin_audit_logs`
 --
 ALTER TABLE `admin_audit_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `landing_about_us`

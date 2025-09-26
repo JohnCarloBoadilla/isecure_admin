@@ -58,7 +58,7 @@ if (!empty($session['user_id'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="icon" type="image/png" href=".\images\logo\5thFighterWing-logo.png">
+    <link rel="icon" type="image/png" href="../../images/logo/5thFighterWing-logo.png">
     <link rel="stylesheet" href="../../stylesheet/inventory.css">
     <link rel="stylesheet" href="../../stylesheet/sidebar.css">
     <title>Main Dashboard</title>
@@ -85,7 +85,7 @@ if (!empty($session['user_id'])) {
                 <i class="fa-regular fa-bell me-3"></i>
                 <i class="fa-regular fa-message me-3"></i>
 
-                <div class="user-info">
+            <div class="user-info">
                 <i class="fa-solid fa-user-circle fa-lg me-2"></i>
                 <div class="user-text">
                 <span class="username"><?php echo $fullName; ?></span>
@@ -102,8 +102,8 @@ if (!empty($session['user_id'])) {
                 </div>
             </div>
 
-        </div>
-    </div>
+                </div>
+            </div>
             </div>
         </div>
 
