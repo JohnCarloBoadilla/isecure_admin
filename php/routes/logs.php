@@ -2,14 +2,14 @@
 require_once '../models/Database.php';
 include_once "partials/sidebar.php";
 
-$db = Database::getConnection();
+$db = DBModel::getConnection();
 $typeFilter = $_GET['type'] ?? 'all';
 $statusFilter = $_GET['status'] ?? 'all';
 
 $query = "SELECT logs.*, visitors.visitor_name, visitors.time_in, visitors.time_out 
-          FROM logs 
-          LEFT JOIN visitors ON logs.visitor_id = visitors.id
-          WHERE 1=1";
+            FROM logs 
+            LEFT JOIN visitors ON logs.visitor_id = visitors.id
+            WHERE 1=1";
 $params = [];
 
 if($typeFilter != 'all') { 

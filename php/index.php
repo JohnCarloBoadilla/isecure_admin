@@ -1,5 +1,5 @@
 <?php
 // Entry point for the PHP app
-header("Location: /php/routes/dashboard.php");
+header("Location: /php/routes/maindashboard.php");
 exit;
 ?>

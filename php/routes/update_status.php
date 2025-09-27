@@ -2,6 +2,8 @@
 header('Content-Type: application/json');
 require_once '../models/Database.php';
 
+$pdo= DBModel::getConnection();
+
 // Get the POST body
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -21,7 +23,7 @@ if (!in_array($action, ['approve', 'deny'])) {
 }
 
 try {
-    $conn = Database::getConnection();
+    $conn = DBModel::getConnection();
     
     // Update the visitor status
     $stmt = $conn->prepare("UPDATE visitors SET status = :status WHERE id = :id");

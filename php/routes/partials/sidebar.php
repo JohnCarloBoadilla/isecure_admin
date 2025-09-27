@@ -1,22 +1,26 @@
-<div id="sidebar-container">
-    <ul>
-        <h6>MENU</h6>
-        <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="camera_view.php">Camera View</a></li>
-        <li><a href="camera_livefeed.php">Live Feed</a></li>
-        <li><a href="camera_personal_info.php">Personal Information</a></li>        
-        <li><a href="visitors.php">Visitors</a></li>
-        <li><a href="pendings.php">Pending</a></li>
-        <li><a href="personnels.php">Personnels</a></li>
-        <li><a href="vehicle.php">Vehicles</a></li>
-        <li><a href="visitor_form.php">Visitor Form</a></li>
-        <h6>DASHBOARD WIDGETS</h6>
-        <li><a href="daily_visit_analysis.php">Daily Visit Analysis</a></li>
-        <li><a href="visitor_status.php">Visitor Status</a></li>
-        <h6>DATA MANAGEMENT</h6>
-        <li><a href="personnel_accounts.php">Personnel Accounts</a></li>
-        <li><a href="users.php">Users</a></li>        
-        <li><a href="reports.php">Reports</a></li>
-        <li><a href="logs.php">Logs</a></li>
-    </ul>
-</div>
+    <div class="sidebar-panel">
+      <h1 class="sidebar-header">iSecure</h1>
+      <div class="nav-links">
+        <ul>
+          <h6>MENU</h6>
+          <li><i class="fa-solid fa-gauge-high"></i><a href="maindashboard.php"> Main Dashboard</a></li>
+          <li><i class="fa-solid fa-video"></i><a href="cameraview.php"> Camera View</a></li>
+          <li class="camera-view-drop-down"><i class="fa-solid fa-circle-dot"></i><a href="livefeed.php"> Live Feed</a></li>
+          <li class="camera-view-drop-down"><i class="fa-solid fa-id-card-clip"></i><a href="personinformation.php"> Person Information</a></li>
+          <li><i class="fa-solid fa-user"></i><a href="visitors.php"> Visitors</a></li>
+          <li><i class="fa-solid fa-car-side"></i><a href="vehicles.php"> Vehicles</a></li>
+          <li><i class="fa-solid fa-user-gear"></i><a href="personnels.php"> Personnels</a></li>
+          <li><i class="fa-solid fa-clock-rotate-left"></i><a href="pendings.php"> Pendings</a></li>
+          <h6>DASHBOARD WIDGETS</h6>
+          <li><i class="fa-solid fa-chart-column"></i><a href="daily_visit_analysis.php"> Daily Visits Analysis</a></li>
+          <li><i class="fa-solid fa-list-check"></i><a href="visitor_status.php"> Visitor Status</a></li>
+          <li><i class="fa-solid fa-car"></i><a href="latest_vehicle_entry.php"> Latest Vehicle Entry</a></li>
+          <li><i class="fa-solid fa-user-clock"></i><a href="user_activity.php"> User Activity</a></li>
+          <h6>DATA MANAGEMENT</h6>
+          <li><i class="fa-solid fa-image-portrait"></i><a href="personnelaccounts.php"> Personnel Accounts</a></li>
+          <li><i class="fa-solid fa-box-archive"></i><a href="inventory.php"> Inventory</a></li>
+          <h6>CUSTOMIZATION</h6>
+          <li><i class="fa-solid fa-newspaper"></i><a href="customizelanding.php"> Landing Page</a></li>
+        </ul>
+      </div>
+    </div>

@@ -3,7 +3,7 @@ require_once 'Database.php';
 
 class Log {
     public static function getFiltered($type='all',$status='all') {
-        $db = Database::getConnection();
+        $db = DBModel::getConnection();
         $sql = "SELECT * FROM logs WHERE 1=1";
         $params = [];
 

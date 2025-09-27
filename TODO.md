@@ -1,5 +1,7 @@
-- [x] Fix sidebar fetch path in camera_livefeed.php from '/static/partials/sidebar.html' to 'partials/sidebar.php'
-- [x] Fix sidebar fetch path in camera_personal_info.php from '/static/partials/sidebar.html' to 'partials/sidebar.php'
-- [x] Add actions div in camera_livefeed.php HTML for buttons
-- [x] Modify camera_livefeed.php JS to add "View Personal Info" button after successful face recognition
-- [x] Fix default face image path in camera_personal_info.php to '/public/icons/default_face.jpg'
+- [x] Update title in cameraview.php to "Camera Feature Selection"
+- [x] Update header path and current-loc to reflect Camera Feature Selection
+- [x] Add styles to cameraview.css to match camera_view.php layout
+- [x] Update camera-feed and camera-view to display feature boxes with text
+- [x] Remove camera-feed-status div
+- [x] Update goToFeature in cameraview.js to camera_livefeed.php
+- [x] Verify the implementation works correctly
